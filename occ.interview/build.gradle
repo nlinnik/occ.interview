@@ -14,3 +14,14 @@ dependencies {
 
     compile 'commons-io:commons-io:2.5'
 }
+
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.nlinnik.occ.interview.NameScoreApplication'
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
